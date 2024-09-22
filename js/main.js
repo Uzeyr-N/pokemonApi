@@ -1,18 +1,28 @@
 //Pokemon API
 
 //! DOM Manipulation //!
-document.querySelector("button").addEventListener("click", getPokemon);
-//add functionality to 'buttton' tied to getPokemon function.
+const button = document.querySelector("button").addEventListener("click", getPokemon)
+//tied to getPokemon function
+//add functionality to 'buttton' .
 
-  
+
+//function to clear input of previos values from the dom
+function clearPreviousData(){
+  document.querySelector('h1').innerHTML = ''
+  document.querySelector('img').src = ''
+  document.querySelector('#typeList').innerHTML= ''
+}
+
+
+
+
 
 function getPokemon() {
   //console.log('does this work') yes
-
+  clearPreviousData ();
   let userChoice = document.querySelector("input").value;
   //waits for input to get the VALUE from user use choice
-
-  const url = `https://pokeapi.co/api/v2/pokemon/${userChoice}`.toLowerCase();
+  const url = `https://pokeapi.co/api/v2/pokemon/${userChoice}?offset=20&limit=150`.toLowerCase();
   //pokemon api data stored in varaible for the fetch
   const getImage = `https://img.pokemondb.net/artwork/${userChoice}.jpg`;
   //image sprite from seperate sources not an api
@@ -25,14 +35,12 @@ function getPokemon() {
       document.querySelector("h1").innerText = res.name; 
         //!DOM manipulation getting the data direclt from the api and putting in the dom //! 
       document.querySelector(".pokemonImage").src = getImage;
-
       let pokemonType = res.types; 
       //Access array on objects for additional information such as types of elements, stored in varible pokemontYpes.
-
-      //for each function
+      //for each function. as there are multiple sub types(elements) this will loop through  and display the data(res) in the dom
       pokemonType.forEach((e) => {
-        let typeList = document.createElement("li"); //var typelist = create a new element in html
-        typeList.innerText = e.type.name; //
+        let typeList = document.createElement('li'); //var typelist = create a new li element in our parent ul in the html
+        typeList.innerText = e.type.name; // dot notation - access to the name of sub-types of elements
         document.querySelector("#typeList").appendChild(typeList);
       });
     })
@@ -40,41 +48,3 @@ function getPokemon() {
       console.log("error");
     });
 }
-
-// const apikey = "https://pokeapi.co/api/v2/move";
-
-// fetch(apikey)
-//   .then((res) => res.json())
-//   .then((res) => {
-//     console.log(res);
-//   })
-
-//   .catch((err) => {
-//     console.log("second one not working");
-//   });
-
-// document.querySelector('button').addEventListener('click', getPokemon);
-
-// function getPokemon(){
-//     const userChoice = document.querySelector('input').value.trim().toLowerCase(); // User input (name)
-//     const url = `https://pokeapi.co/api/v2/pokemon/${userChoice}`;
-//     const getImage = `https://img.pokemondb.net/artwork/${userChoice}.jpg`; // Image URL
-//     const abilities =
-
-//     fetch(url)
-//         .then(pokemon => {
-//             if (!pokemon.ok) {
-//                 throw new Error('Pokemon not found');
-//             }
-//             return pokemon.json();
-//         })
-//         .then(pokemon => {
-//             document.querySelector('h1').innerText = pokemon.name; // Display Pokémon name
-//             document.querySelector('img').src = getImage;  // Set image source
-//         })
-//         .catch(err => {
-//            // document.querySelector('h1').innerText = "Pokemon not found";
-//             //document.querySelector('#pokemon-img').src = ""; // Clear image if not found
-//             console.log('Error:', err);
-//         });
-// }

@@ -5,6 +5,14 @@
 /* Box Model Hack */
 *{
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  border: 2px red solid;
+  height: 100vh;
+  width: 100vw;
 }
 
 /******************************************
@@ -13,6 +21,8 @@
 img{
   display: block;
   margin: 0 auto;
+  height: auto;
+  width: auto;
 }
 
 

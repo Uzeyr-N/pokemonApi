@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="description" content="This is where your description goes" />
     <meta name="keywords" content="one, two, three" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
 
     <title>Title in the tab</title>
 
@@ -12,15 +15,33 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <button type="button" name="button">Get pokemon</button>
-    <input type="text" />
-    <h1 class="name"></h1>
-    <h2>Type</h2>
-    <ul id="typeList">
-    </ul>
+    <header>
+      <section>
+        <h2>Choose your pokemon</h2>
+      </section>
+    </header>
+    <main>
+      <section>
+        <button type="button" name="button">Get pokemon</button>
+        <input type="text" class="userChoice" />
+        <h1 class="name">Pokemon</h1>
+        <h2>Type</h2>
+        <ul id="typeList"></ul>
+      </section>
+      <section id="pokemon">
+        <img class="pokemonImage" alt="image" />
+      </section>
 
-    <img class="pokemonImage" alt="image" > 
+  </main>
+  <section>
+    <footer>
+      <p>footer</p>
+    </footer>
+  </section>
 
-    <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+    <!-- <script type="text/javascript" src="js/v2js.js"></script> -->
+     <script type="text/javascript" src="js/fetch.js"></script>
   </body>
 </html>
